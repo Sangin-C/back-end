@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTDMapper3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.toy.project.mapper.UserMapper">
+  
+      <insert id="insertUser" parameterType="com.toy.project.vo.UserVO">
+          INSERT INTO users(username, password, age, salary, phonenum)
+          VALUES(#{username}, #{password}, #{age}, #{salary}, #{phonenum})
+      </insert>
+  
+     <select id="userList" resultType="com.toy.project.vo.UserVO">
+         SELECT * FROM users
+         ORDER BY id
+     </select>
+     
+     <select id="fetchUserByID" resultType="com.toy.project.vo.UserVO"
+      parameterType="int">
+         SELECT * FROM users
+         WHERE id = #{id}
+     </select>
+     
+     <delete id="deleteUser" parameterType="int">
+         DELETE FROM users
+         WHERE id = #{id}
+     </delete>
+     
+     <update id="updateUser" parameterType="com.toy.project.vo.UserVO">
+         UPDATE users
+         SET age = #{age}, salary = #{salary}, phonenum = #{phonenum}
+         WHERE id = #{id}
+     </update>
+  
+  </mapper>

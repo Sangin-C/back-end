@@ -11,4 +11,5 @@ public class UserVO {
     int age;
     int salary;
     String phonenum;
+    
 }

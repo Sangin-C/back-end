@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.toy.project.mapper.UserMapper;
 import com.toy.project.vo.UserVO;
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -29,19 +28,22 @@ public class UserController {
         return userMapper.userList();
     }
     
+    
     @PostMapping
     void insertUser(@RequestBody UserVO user) {
         userMapper.insertUser(user);
         System.out.println("유저 DB 저장 성공");
     }
     
+    
     @GetMapping("/{id}")
     public UserVO fetchUserByID(@PathVariable int id) {
-        System.out.println(userMapper.fetchUserByID(id));
-        UserVO fetchUser = userMapper.fetchUserByID(id);
+        System.out.println(userMapper.userInfo(id));
+        UserVO fetchUser = userMapper.userInfo(id);
         return fetchUser;
     }
-        
+     
+    
     @PutMapping("/{id}")
     public void updateUser(@PathVariable int id, @RequestBody UserVO user) {
         
@@ -53,6 +55,7 @@ public class UserController {
         
         userMapper.updateUser(updateUser); 
     }
+    
     
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {

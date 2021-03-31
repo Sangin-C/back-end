@@ -14,8 +14,7 @@
          ORDER BY id
      </select>
      
-     <select id="fetchUserByID" resultType="com.toy.project.vo.UserVO"
-      parameterType="int">
+     <select id="userInfo" resultType="com.toy.project.vo.UserVO" parameterType="int">
          SELECT * FROM users
          WHERE id = #{id}
      </select>

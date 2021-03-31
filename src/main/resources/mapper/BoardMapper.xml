@@ -8,5 +8,10 @@
          SELECT * FROM boards
          ORDER BY id
      </select>
+     
+     <insert id="insertBoard" parameterType="com.toy.project.vo.BoardVO">
+     	INSERT INTO boards(title, contents, username)
+        VALUES(#{title}, #{contents}, #{username})
+     </insert>
   
   </mapper>

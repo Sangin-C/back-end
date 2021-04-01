@@ -9,9 +9,9 @@
          ORDER BY id
      </select>
      
-<!--      <insert id="insertBoard" parameterType="com.toy.project.vo.BoardVO"> -->
-<!--      	INSERT INTO boards(title, contents, username) -->
-<!--         VALUES(#{title}, #{contents}, #{username}) -->
-<!--      </insert> -->
+     <select id="boardInfo" parameterType="int" resultType="com.toy.project.vo.BoardVO">
+     	SELECT * FROM boards
+     	WHERE id = #{id}
+     </select>
   
   </mapper>

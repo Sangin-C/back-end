@@ -15,10 +15,17 @@ public class BoardService {
 	@Autowired
 	BoardRepository boardRepository;
 	
+	//전체 리스트 출력
 	public List<BoardVO> findAll(){
 		List<BoardVO> boards = new ArrayList<>();
 		boardRepository.findAll().forEach(e -> boards.add(e));
 		return boards;
+	}
+	
+	//등록
+	public BoardVO boardRegist(BoardVO boardVO) {
+		boardRepository.save(boardVO);
+		return boardVO;
 	}
 	
 }

@@ -10,17 +10,17 @@ import com.toy.project.vo.BoardVO;
 public interface BoardMapper {
 	
 	//게시판 리스트
-	//List<BoardVO> boardList();
+	List<BoardVO> boardList();
 	
 	//게시판 상세보기
 	BoardVO boardInfo(int id);
 	
 	//게시판 등록
-	//void insertBoard(BoardVO board);
+	void boardRegist(BoardVO board);
 	
 	//게시판 수정
-	//void updateBoard(BoardVO board);
+	void boardUpdate(BoardVO board);
 	
 	//게시판 삭제
-	//void deleteBoard();
+	void boardDelete(int id);
 }

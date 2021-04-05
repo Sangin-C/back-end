@@ -25,30 +25,31 @@ public class CustomerService {
 	}
 	
 	//고객 정보 상세조회
-	public Optional<CustomerVO> customerInfo(int idx){
+	public Optional<CustomerVO> customerInfo(Long idx){
 		Optional<CustomerVO> customer = customerRepository.findById(idx);
 		return customer;
 	}
 	
 	//고객 정보 저장
-	public CustomerVO customerRegist(CustomerVO customerVO) {
+	public void customerRegist(CustomerVO customerVO) {
 		customerRepository.save(customerVO);
-		return customerVO;
 	}
 	
 	//고객 정보 수정
-	public void customerUpdate(int idx, CustomerVO customerVO) {
+	public void customerUpdate(Long idx, CustomerVO customerVO) {
 		Optional<CustomerVO> customer = customerRepository.findById(idx);
 		
 		if(customer.isPresent()) {
 			customer.get().setCustomerPhonenum(customerVO.getCustomerPhonenum());
 			customer.get().setCustomerAge(customerVO.getCustomerAge());
 			customer.get().setCustomerAddr(customerVO.getCustomerAddr());
+			customerRepository.save(customerVO);
 		}
+		
 	}
 	
 	//고객 정보 삭제
-	public void customerInfoDelete(int idx) {
+	public void customerInfoDelete(Long idx) {
 		customerRepository.deleteById(idx);
 	}
 	

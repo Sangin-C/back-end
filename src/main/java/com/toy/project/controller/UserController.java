@@ -18,6 +18,7 @@ import com.toy.project.vo.UserVO;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+	
 	@Autowired
     UserMapper userMapper;
     
@@ -28,14 +29,6 @@ public class UserController {
         return userMapper.userList();
     }
     
-    
-    @PostMapping
-    void insertUser(@RequestBody UserVO user) {
-        userMapper.insertUser(user);
-        System.out.println("유저 DB 저장 성공");
-    }
-    
-    
     @GetMapping("/{id}")
     public UserVO fetchUserByID(@PathVariable int id) {
         System.out.println(userMapper.userInfo(id));
@@ -43,6 +36,11 @@ public class UserController {
         return fetchUser;
     }
      
+    @PostMapping
+    public void insertUser(@RequestBody UserVO user) {
+        userMapper.insertUser(user);
+        System.out.println("유저 DB 저장 성공");
+    }
     
     @PutMapping("/{id}")
     public void updateUser(@PathVariable int id, @RequestBody UserVO user) {
@@ -55,7 +53,6 @@ public class UserController {
         
         userMapper.updateUser(updateUser); 
     }
-    
     
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {

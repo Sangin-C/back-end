@@ -4,14 +4,53 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.toy.project.mapper.BoardMapper">
   
+  	 <!-- 게시판 리스트 -->
      <select id="boardList" resultType="com.toy.project.vo.BoardVO">
-         SELECT * FROM boards
-         ORDER BY id
+		SELECT
+         	*
+        FROM
+        	boards
+        ORDER BY id
      </select>
      
+     <!-- 게시판 상세보기 -->
      <select id="boardInfo" parameterType="int" resultType="com.toy.project.vo.BoardVO">
-     	SELECT * FROM boards
-     	WHERE id = #{id}
+     	SELECT 
+     		*
+     	FROM 
+     		boards
+     	WHERE 
+     		id = #{id}
      </select>
-  
+     
+     <!-- 게시판 등록 -->
+     <insert id="boardRegist" parameterType="com.toy.project.vo.BoardVO">
+     	INSERT INTO boards(
+     		title,
+     		contents,
+     		username
+     	) 
+     	VALUES(
+     		#{title},
+     		#{contents},
+     		#{username}
+     	)
+     </insert>
+     
+     <!-- 게시판 수정 -->
+     <update id="boardUpdate" parameterType="com.toy.project.vo.BoardVO">
+     	UPDATE 
+     		boards
+     	SET 
+     		title = #{title},
+     		contents = #{contents}
+     </update>
+
+	 <!-- 게시판 삭제 -->     
+     <delete id="boardDelete" parameterType="int">
+     	DELETE FROM users
+     	WHERE
+     		id = #{id}
+     </delete>
+     
   </mapper>

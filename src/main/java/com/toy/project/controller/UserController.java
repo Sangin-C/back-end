@@ -24,14 +24,12 @@ public class UserController {
     
     @GetMapping
     public List<UserVO> userList(){
-        System.out.println(userMapper.userList());
         System.out.println("유저리스트 출력 성공!");
         return userMapper.userList();
     }
     
     @GetMapping("/{id}")
     public UserVO fetchUserByID(@PathVariable int id) {
-        System.out.println(userMapper.userInfo(id));
         UserVO fetchUser = userMapper.userInfo(id);
         return fetchUser;
     }

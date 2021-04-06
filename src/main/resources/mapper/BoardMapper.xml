@@ -44,11 +44,13 @@
      	SET 
      		title = #{title},
      		contents = #{contents}
+     	WHERE
+     		id = #{id}
      </update>
 
 	 <!-- 게시판 삭제 -->     
      <delete id="boardDelete" parameterType="int">
-     	DELETE FROM users
+     	DELETE FROM boards
      	WHERE
      		id = #{id}
      </delete>
